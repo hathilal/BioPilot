@@ -107,3 +107,16 @@ Do not commit raw datasets, private laboratory data, credentials, or API keys. B
 **Milestone 1: repository scaffold and environment setup.**
 
 Next: audit one benchmark task and decide whether its labels, assay definition, licence, and split are appropriate for a retrospective active-learning study.
+
+## Development hardware and acceleration
+
+The initial development machine reported an Intel Core i5-1240P CPU (16 logical CPUs), Intel Iris Xe integrated graphics, and 16 GiB RAM. No NVIDIA GPU was listed, and `nvidia-smi` could not communicate with an NVIDIA driver. Based on this evidence, CUDA is not the appropriate initial setup path.
+
+Start with CPU-friendly baselines and measure runtime and memory before increasing model complexity. Useful practices include:
+- Set estimator parallelism deliberately (for supported scikit-learn estimators, consider `n_jobs`), and benchmark rather than assuming more workers are faster.
+- Cache sequence features or pretrained embeddings so active-learning rounds do not recompute them unnecessarily.
+- Keep an eye on RAM use; protein-language-model embeddings and fine-tuning can exceed a laptop's practical memory/time budget.
+- Consider Intel GPU acceleration only if a chosen framework explicitly supports the available Intel hardware and software stack; do not assume CUDA compatibility.
+
+Hardware and available memory are machine-specific and may change. No GPU acceleration or model-training performance has yet been benchmarked for BioPilot.
+
