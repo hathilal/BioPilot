@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools==80.9.0", "wheel==0.45.1"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "biopilot"
+version = "0.1.0"
+description = "Uncertainty-aware active learning research for protein fitness prediction"
+readme = "README.md"
+requires-python = ">=3.11,<3.13"
+dependencies = [
+    "biopython==1.85",
+    "numpy==2.2.6",
+    "pandas==2.3.1",
+    "scikit-learn==1.7.1",
+]
+
+[project.optional-dependencies]
+dev = [
+    "jupyterlab==4.4.5",
+    "pytest==8.4.1",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+addopts = "-ra"
