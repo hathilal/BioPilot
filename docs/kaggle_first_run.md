@@ -18,6 +18,7 @@ Enable internet in the Kaggle notebook settings if the download is blocked.
 ```python
 from pathlib import Path
 import pandas as pd
+from urllib.request import urlretrieve
 
 DATA_DIR = Path("/kaggle/working/biopilot_data")
 DATA_DIR.mkdir(parents=True, exist_ok=True)
@@ -26,7 +27,7 @@ url = "https://flip.protein.properties/assets/splits/amylase/one_to_many.csv.gz"
 csv_path = DATA_DIR / "amylase_one_to_many.csv.gz"
 
 if not csv_path.exists():
-    pd.io.common.urlretrieve(url, csv_path)
+    urlretrieve(url, csv_path)
 
 df = pd.read_csv(csv_path)
 print("Shape:", df.shape)
@@ -34,7 +35,7 @@ print("Columns:", df.columns.tolist())
 display(df.head())
 ```
 
-If `pd.io.common.urlretrieve` is unavailable in your pandas version, use `from urllib.request import urlretrieve` and call `urlretrieve(url, csv_path)`.
+The first download can take a short time; later runs reuse the saved file.
 
 ## Kaggle notebook — Cell 2: audit labels and official split
 
