@@ -1,6 +1,6 @@
-# Kaggle first run: FLIP2 Alpha-amylase
+# Later-stage Kaggle guide: FLIP2 Alpha-amylase
 
-This is the first reproducible BioPilot exercise. It downloads the official FLIP2 Alpha-amylase `one-to-many` CSV split and audits the file before fitting any model. Do not upload the dataset to this repository; `data/` is git-ignored.
+Use this guide when the project is ready for dataset-backed cloud training. It downloads the official FLIP2 Alpha-amylase `one-to-many` CSV split and audits the file before fitting any model. For the current local-first workflow, this guide is reference material only. Do not upload the dataset to this repository; `data/` is git-ignored.
 
 ## Why this dataset?
 
