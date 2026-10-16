@@ -96,7 +96,7 @@ python -m pip check
 pytest
 ```
 
-The test command will become useful as we add the first tests. Until then, there may be no tests to collect.
+The initial test suite contains a smoke test that checks whether the installed package exposes a non-empty version string. This is only a basic packaging check, not evidence that scientific code or models are correct.
 
 ## Data handling
 
